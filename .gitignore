@@ -1,2 +1,5 @@
 *.vscode
 /test
+*.o
+/data
+main
