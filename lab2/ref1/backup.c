@@ -3,8 +3,7 @@
 char ADDR_SRC[BUF_SIZE];
 
 int main(int argc, char *argv[]) {
-
-  if ( 2 != argc ) {
+  if (2 != argc) {
     debug(INFO_INPUT_DIR);
     exit(EXIT_FAILURE);
   }
@@ -17,7 +16,7 @@ int main(int argc, char *argv[]) {
   alarm(CYCLE_TIME);
 
   for (int i = 0;;) {
-    if ( i % CYCLE_TIME == 0 ) i = 0;
+    if (i % CYCLE_TIME == 0) i = 0;
     debug(INFO_TIME, ++i);
     sleep(1);
   }

@@ -5,7 +5,7 @@ void copyfile(const char *src, const char *dest, FILE *stream) {
   char buff[BUF_SIZE];
   FILE *in, *out;
 
-  in  = fopen(src, "r+");
+  in = fopen(src, "r+");
   out = fopen(dest, "w+");
 
   while (len = fread(buff, 1, sizeof(buff), in)) {
@@ -21,23 +21,26 @@ void copyfile(const char *src, const char *dest, FILE *stream) {
 
 void removeHead(const char *str, const char *rep, char *mid) {
   int i = 0, j = 0;
-  while (*(rep + i) != '\0') if (str[i] == rep[i]) i++; else break;
+  while (*(rep + i) != '\0')
+    if (str[i] == rep[i])
+      i++;
+    else
+      break;
   while (*(str + i) != '\0') mid[j++] = str[i++];
   mid[j] = '\0';
 }
 
 void backupData(const char *pathname, const char *pathorg, FILE *stream) {
-  DIR  *dp;
+  DIR *dp;
   struct dirent *dirp;
-  struct stat st      = {0};
-  char PATH_CUR[256]  = {0};
-  char PATH_SRC[256]  = {0};
-  char PATH_MID[256]  = {0};
+  struct stat st = {0};
+  char PATH_CUR[256] = {0};
+  char PATH_SRC[256] = {0};
+  char PATH_MID[256] = {0};
   char PATH_DEST[256] = {0};
 
-  if (NULL == (dp = opendir(pathname)) ) return;
-  while ( NULL != ( dirp = readdir(dp))) {
-
+  if (NULL == (dp = opendir(pathname))) return;
+  while (NULL != (dirp = readdir(dp))) {
     if (dirp->d_type == DT_DIR) {
       // 检测当前路径和父路径
       checkSp(dirp->d_name);
@@ -50,7 +53,6 @@ void backupData(const char *pathname, const char *pathorg, FILE *stream) {
 
       // 检测文件夹是否存在
       if (-1 == stat(PATH_DEST, &st)) {
-
         // 创建文件夹
         if (mkdir(PATH_DEST, DEFAULT_MODE)) {
           error(EXIT_FAILURE, errno, ERR_CR_DIR);
@@ -67,7 +69,8 @@ void backupData(const char *pathname, const char *pathorg, FILE *stream) {
       // 去掉文件名的原始路径，比如`/usr/local/src/`中的`/usr/local`
       removeHead(pathname, pathorg, PATH_MID);
       // 生成目的文件的绝对路径
-      snprintf(PATH_DEST, sizeof(PATH_DEST) - 1, "%s%s%s", ADDR_DEST, PATH_MID, dirp->d_name);
+      snprintf(PATH_DEST, sizeof(PATH_DEST) - 1, "%s%s%s", ADDR_DEST, PATH_MID,
+               dirp->d_name);
       // 拷贝文件
       copyfile(PATH_SRC, PATH_DEST, stream);
     }
@@ -86,7 +89,7 @@ void handler() {
   time_t t;
   size_t len;
   char *buf;
-  FILE *stream,*list;
+  FILE *stream, *list;
 
   time(&t);
   stream = open_memstream(&buf, &len);
