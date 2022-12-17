@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>top</title>
+</head>
+
+<style>
+  li {
+    height: 30px;
+    width: 1200px;
+    list-style: none;
+  }
+
+  li div {
+    float: left;
+    width: 400px;
+  }
+</style>
+
+<script>
+
+  function click(obj) {
+    if (obj.target.classList[0] == "btn") {
+      strs = obj.target.parentNode.innerHTML.split(" ")
+      pid = strs[0]
+      var httpRequest = new XMLHttpRequest();
+      httpRequest.open("GET", "/" + pid, true);
+      httpRequest.send();
+      httpRequest.onreadystatechange = function () {
+        var data = httpRequest.responseText
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+          alert("成功")
+        } else {
+          alert("失败");
+        }
+      }
+    }
+  }
+
+  function refresh() {
+    location.reload()
+  }
+
+  document.onclick = click
+</script>
+
+<body onload="JavaScript:AutoRefresh(5000);">
+  <div>
+    <button onclick="refresh()">刷新</button>
+    <div>每5s自动刷新</div>
+    <li>
+      <div>非闲置进程 </div>
+      <div>占用CPU最高进程 </div>
+      <div>占用内存最高进程 </div>
+    </li><li><div>1991 node <button class="btn">关闭</button> </div><div>top 6.2%</div><div>node 8.2%</div></li><li><div>14 rcu_sched </div><div>systemd 0.0%</div><div>node 5.5%</div></li><li><div>1053 sshd <button class="btn">关闭</button> </div><div>kthreadd 0.0%</div><div>gopls 3.8%</div></li><li><div>1409 node <button class="btn">关闭</button></div></li><li><div>3630 top <button class="btn">关闭</button></div></li><li><div>1 systemd </div></li><li><div>2 kthreadd </div></li><li><div>3 rcu_gp </div></li><li><div>4 rcu_par_gp </div></li><li><div>5 netns </div></li><li><div>7 kworker/0:0H-events_highpri </div></li><li><div>9 kworker/0:1H-events_highpri </div></li><li><div>10 mm_percpu_wq </div></li><li><div>11 rcu_tasks_rude_ </div></li><li><div>12 rcu_tasks_trace </div></li><li><div>13 ksoftirqd/0 </div></li><li><div>15 migration/0 </div></li><li><div>16 idle_inject/0 </div></li><li><div>18 cpuhp/0 </div></li><li><div>19 kdevtmpfs </div></li><li><div>20 inet_frag_wq </div></li><li><div>21 kauditd </div></li><li><div>22 khungtaskd </div></li><li><div>23 oom_reaper </div></li><li><div>24 writeback </div></li><li><div>25 kcompactd0 </div></li><li><div>26 ksmd </div></li><li><div>27 khugepaged </div></li><li><div>73 kintegrityd </div></li><li><div>74 kblockd </div></li><li><div>75 blkcg_punt_bio </div></li><li><div>76 tpm_dev_wq </div></li><li><div>77 ata_sff </div></li><li><div>78 md </div></li><li><div>79 edac-poller </div></li><li><div>80 devfreq_wq </div></li><li><div>81 watchdogd </div></li><li><div>84 kswapd0 </div></li><li><div>85 ecryptfs-kthrea </div></li><li><div>87 kthrotld </div></li><li><div>88 irq/24-pciehp </div></li><li><div>89 irq/25-pciehp </div></li><li><div>90 irq/26-pciehp </div></li><li><div>91 irq/27-pciehp </div></li><li><div>92 irq/28-pciehp </div></li><li><div>93 irq/29-pciehp </div></li><li><div>94 irq/30-pciehp </div></li><li><div>95 irq/31-pciehp </div></li><li><div>96 irq/32-pciehp </div></li><li><div>97 irq/33-pciehp </div></li><li><div>98 irq/34-pciehp </div></li><li><div>99 irq/35-pciehp </div></li><li><div>100 irq/36-pciehp </div></li><li><div>101 irq/37-pciehp </div></li><li><div>102 irq/38-pciehp </div></li><li><div>103 irq/39-pciehp </div></li><li><div>104 irq/40-pciehp </div></li><li><div>105 irq/41-pciehp </div></li><li><div>106 irq/42-pciehp </div></li><li><div>107 irq/43-pciehp </div></li><li><div>108 irq/44-pciehp </div></li><li><div>109 irq/45-pciehp </div></li><li><div>110 irq/46-pciehp </div></li><li><div>111 irq/47-pciehp </div></li><li><div>112 irq/48-pciehp </div></li><li><div>113 irq/49-pciehp </div></li><li><div>114 irq/50-pciehp </div></li><li><div>115 irq/51-pciehp </div></li><li><div>116 irq/52-pciehp </div></li><li><div>117 irq/53-pciehp </div></li><li><div>118 irq/54-pciehp </div></li><li><div>119 irq/55-pciehp </div></li><li><div>120 acpi_thermal_pm </div></li><li><div>122 scsi_eh_0 </div></li><li><div>123 scsi_tmf_0 </div></li><li><div>124 scsi_eh_1 </div></li><li><div>125 scsi_tmf_1 </div></li><li><div>127 vfio-irqfd-clea </div></li><li><div>128 mld </div></li><li><div>129 ipv6_addrconf </div></li><li><div>133 kworker/0:2-events </div></li><li><div>141 kstrp </div></li><li><div>144 zswap-shrink </div></li><li><div>145 kworker/u257:0-hci0 </div></li><li><div>150 charger_manager </div></li><li><div>189 mpt_poll_0 </div></li><li><div>190 mpt/0 </div></li><li><div>191 scsi_eh_2 </div></li><li><div>192 scsi_tmf_2 </div></li><li><div>193 scsi_eh_3 </div></li><li><div>194 scsi_tmf_3 </div></li><li><div>195 scsi_eh_4 </div></li><li><div>196 scsi_tmf_4 </div></li><li><div>197 scsi_eh_5 </div></li><li><div>198 scsi_tmf_5 </div></li><li><div>199 scsi_eh_6 </div></li><li><div>200 scsi_tmf_6 </div></li><li><div>201 scsi_eh_7 </div></li><li><div>202 scsi_tmf_7 </div></li><li><div>203 scsi_eh_8 </div></li><li><div>204 scsi_tmf_8 </div></li><li><div>205 scsi_eh_9 </div></li><li><div>206 scsi_tmf_9 </div></li><li><div>207 scsi_eh_10 </div></li><li><div>208 cryptd </div></li><li><div>209 scsi_tmf_10 </div></li><li><div>210 scsi_eh_11 </div></li><li><div>211 scsi_tmf_11 </div></li><li><div>213 scsi_eh_12 </div></li><li><div>221 scsi_tmf_12 </div></li><li><div>222 scsi_eh_13 </div></li><li><div>226 scsi_tmf_13 </div></li><li><div>231 scsi_eh_14 </div></li><li><div>234 scsi_tmf_14 </div></li><li><div>236 scsi_eh_15 </div></li><li><div>238 scsi_tmf_15 </div></li><li><div>240 scsi_eh_16 </div></li><li><div>242 scsi_tmf_16 </div></li><li><div>244 scsi_eh_17 </div></li><li><div>246 scsi_tmf_17 </div></li><li><div>249 ttm_swap </div></li><li><div>250 scsi_eh_18 </div></li><li><div>252 scsi_tmf_18 </div></li><li><div>253 irq/16-vmwgfx </div></li><li><div>254 scsi_eh_19 </div></li><li><div>257 scsi_tmf_19 </div></li><li><div>259 scsi_eh_20 </div></li><li><div>261 scsi_tmf_20 </div></li><li><div>262 card0-crtc0 </div></li><li><div>263 scsi_eh_21 </div></li><li><div>265 card0-crtc1 </div></li><li><div>266 scsi_tmf_21 </div></li><li><div>268 card0-crtc2 </div></li><li><div>269 scsi_eh_22 </div></li><li><div>270 scsi_tmf_22 </div></li><li><div>272 card0-crtc3 </div></li><li><div>273 scsi_eh_23 </div></li><li><div>274 card0-crtc4 </div></li><li><div>276 scsi_tmf_23 </div></li><li><div>277 card0-crtc5 </div></li><li><div>279 scsi_eh_24 </div></li><li><div>280 card0-crtc6 </div></li><li><div>281 card0-crtc7 </div></li><li><div>282 scsi_tmf_24 </div></li><li><div>283 scsi_eh_25 </div></li><li><div>284 scsi_tmf_25 </div></li><li><div>285 scsi_eh_26 </div></li><li><div>286 scsi_tmf_26 </div></li><li><div>287 scsi_eh_27 </div></li><li><div>288 scsi_tmf_27 </div></li><li><div>289 scsi_eh_28 </div></li><li><div>290 scsi_tmf_28 </div></li><li><div>291 scsi_eh_29 </div></li><li><div>292 scsi_tmf_29 </div></li><li><div>293 scsi_eh_30 </div></li><li><div>294 scsi_tmf_30 </div></li><li><div>295 scsi_eh_31 </div></li><li><div>296 scsi_tmf_31 </div></li><li><div>319 kworker/u256:28-events_power_efficient </div></li><li><div>320 kworker/u256:29-events_unbound </div></li><li><div>323 scsi_eh_32 </div></li><li><div>324 scsi_tmf_32 </div></li><li><div>342 kdmflush </div></li><li><div>372 raid5wq </div></li><li><div>423 jbd2/dm-0-8 </div></li><li><div>424 ext4-rsv-conver </div></li><li><div>495 systemd-journal </div></li><li><div>528 ipmi-msghandler </div></li><li><div>529 kaluad </div></li><li><div>533 kmpath_rdacd </div></li><li><div>535 kmpathd </div></li><li><div>536 kmpath_handlerd </div></li><li><div>537 multipathd </div></li><li><div>538 systemd-udevd </div></li><li><div>611 kworker/u257:1-hci0 </div></li><li><div>658 jbd2/sda2-8 </div></li><li><div>660 ext4-rsv-conver </div></li><li><div>681 systemd-timesyn <button class="btn">关闭</button></div></li><li><div>704 VGAuthService </div></li><li><div>705 vmtoolsd </div></li><li><div>825 systemd-network <button class="btn">关闭</button></div></li><li><div>827 systemd-resolve <button class="btn">关闭</button></div></li><li><div>843 cron </div></li><li><div>844 dbus-daemon <button class="btn">关闭</button></div></li><li><div>850 networkd-dispat </div></li><li><div>851 polkitd </div></li><li><div>852 rsyslogd <button class="btn">关闭</button></div></li><li><div>854 snapd </div></li><li><div>856 systemd-logind </div></li><li><div>858 udisksd </div></li><li><div>862 agetty </div></li><li><div>864 containerd </div></li><li><div>884 sshd </div></li><li><div>895 ModemManager </div></li><li><div>896 sshd </div></li><li><div>901 unattended-upgr </div></li><li><div>937 systemd <button class="btn">关闭</button></div></li><li><div>938 kworker/0:4-cgroup_destroy </div></li><li><div>939 (sd-pam) <button class="btn">关闭</button></div></li><li><div>944 dockerd </div></li><li><div>1110 sh <button class="btn">关闭</button></div></li><li><div>1247 node <button class="btn">关闭</button></div></li><li><div>1445 node <button class="btn">关闭</button></div></li><li><div>1531 zsh <button class="btn">关闭</button></div></li><li><div>1586 clangd.main <button class="btn">关闭</button></div></li><li><div>1728 gopls <button class="btn">关闭</button></div></li><li><div>2729 kworker/u256:0-events_unbound </div></li><li><div>3628 test.sh <button class="btn">关闭</button></div></li><li><div>3631 sed <button class="btn">关闭</button></div></li></div></body>

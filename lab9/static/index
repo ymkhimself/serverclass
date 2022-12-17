@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>top</title>
+</head>
+
+<style>
+  li {
+    height: 30px;
+    width: 1200px;
+    list-style: none;
+  }
+
+  li div {
+    float: left;
+    width: 400px;
+  }
+</style>
+
+<script>
+
+  function click(obj) {
+    if (obj.target.classList[0] == "btn") {
+      strs = obj.target.parentNode.innerHTML.split(" ")
+      pid = strs[0]
+      var httpRequest = new XMLHttpRequest();
+      httpRequest.open("GET", "/" + pid, true);
+      httpRequest.send();
+      httpRequest.onreadystatechange = function () {
+        var data = httpRequest.responseText
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+          alert("成功")
+        } else {
+          alert("失败");
+        }
+      }
+    }
+  }
+
+  function refresh() {
+    location.reload()
+  }
+
+  document.onclick = click
+</script>
+
+<body onload="JavaScript:AutoRefresh(5000);">
+  <div>
+    <button onclick="refresh()">刷新</button>
+    <div>每5s自动刷新</div>
+    <li>
+      <div>非闲置进程 </div>
+      <div>占用CPU最高进程 </div>
+      <div>占用内存最高进程 </div>
+    </li>
